@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.urls import reverse
 from django.http import HttpResponseRedirect
-from django.views.decorators.csrf import csrf_exempt
 from .models import User, FormationLicence, NoteModule, Module, Message, Evenement
 from .forms import formation, module, message_form
 from django.db.models import Count
@@ -31,7 +30,6 @@ def login_view(request):
             })
     else:
         return render(request, "fsr_licence/login.html")
-
 
 def logout_view(request):
     logout(request)
