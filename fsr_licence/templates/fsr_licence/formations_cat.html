@@ -1,0 +1,46 @@
+{% extends "fsr_licence/layout1.html" %}
+{% load static %}
+
+{% block body %}
+
+<section class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div class="max-w-xl mb-4">
+            <span class="bg-blue-100 text-blue-600 text-sm font-bold px-2.5 py-0.5 rounded-xl dark:bg-blue-900 dark:text-blue-300">FORMATIONS</span>
+            <h2 class="text-3xl font-black sm:text-4xl mt-4">FORMATIONS LICENCE</h2>
+        </div>
+
+        <div class="mx-auto mt-8">
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                {% for formation in formations %}
+                <div class="max-w-xl p-6 bg-gray-50 rounded-lg border-2 border-gray-100 hover:bg-gray-100">
+                    <div class="flex justify-between">
+                        <span class="bg-blue-100 text-blue-600 text-sm font-bold px-2.5 py-0.5 rounded-xl">{{ formation.type }}</span>
+                        <span class="bg-indigo-100 text-indigo-600 text-sm font-bold px-2.5 py-0.5 rounded-xl">{{ formation.categorie }}</span>
+                    </div>
+                    <a href="{% url 'view_formation' formation.id %}">
+                        <h5 class="text-lg font-bold text-gray-800 mb-6 mt-4">{{ formation.nom|safe|truncatechars:30 }}</h5>
+                    </a>
+                    <a href="{% url 'view_formation' formation.id %}" class="bg-green-600 hover:bg-green-700 mt-4 inline-flex items-center py-2 text-md font-bold text-center text-white rounded-lg p-2">
+                        <span class="material-symbols-outlined mr-2">
+                            arrow_forward
+                        </span>
+                        Détails
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if user.is_authenticated and user.role == "PROFESSEUR" %}
+        <a href="{% url 'add_formation' %}" class="bg-green-600 inline-flex items-center py-2 px-3 text-md font-bold text-center text-white rounded-lg mt-8">
+            <span class="material-symbols-outlined">
+                add
+            </span>
+            Ajouter Formation
+        </a>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

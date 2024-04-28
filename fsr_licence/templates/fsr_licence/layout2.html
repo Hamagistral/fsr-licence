@@ -1,0 +1,283 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Faculté des Sciences de Rabat</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'fsr_licence/assets/favicon-32x32.png' %}">
+
+        <!-- Icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+
+        <!-- Static -->
+        <link rel="stylesheet" type="text/css" href="{% static '/fsr_licence/style.css' %}">
+        <script src="{% static '/fsr_licence/index.js' %}"></script>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+        </style>
+
+        {{ form.media }}
+    </head>
+
+    <body>
+        <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+            <span class="sr-only">Open sidebar</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+            </svg>
+        </button>
+        
+        <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
+
+            <div class="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                <a href="{% url 'index' %}"><img class="mx-auto h-24 w-auto mb-8" src="{% static 'fsr_licence/assets/logofsr.jpg' %}" alt="LOGO FSR"></a>
+                <span class="relative flex justify-center my-4">
+                    <div
+                      class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-75"
+                    ></div>
+                </span>
+                {% if user.is_authenticated and user.role == "PROFESSEUR" %}
+                    <ul class="space-y-2">
+                        <li>
+                            {% if request.resolver_match.url_name == 'dashboard' %}
+                            <a href="{% url 'dashboard' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <span class="material-symbols-outlined">
+                                    home
+                                </span>
+                                <span class="ml-3">Tableau de Bord</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'dashboard' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100 ">
+                                <span class="material-symbols-outlined">
+                                    home
+                                </span>
+                                <span class="ml-3">Tableau de Bord</span>
+                            </a>
+                            {% endif %}
+                        </li>
+                        {% if user.is_authenticated and user.role == "PROFESSEUR" %}
+                        <li>
+                            {% if request.resolver_match.url_name == 'etudiants_admin' %}
+                            <a href="{% url 'etudiants_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <span class="material-symbols-outlined">
+                                    groups
+                                </span>
+                                <span class="ml-3">Etudiants</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'etudiants_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100">
+                                <span class="material-symbols-outlined">
+                                    groups
+                                </span>
+                                <span class="ml-3">Etudiants</span>
+                            </a>
+                            {% endif %}
+                        </li>
+
+                        <li>
+                            {% if request.resolver_match.url_name == 'professeurs_admin' %}
+                            <a href="{% url 'professeurs_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <span class="material-symbols-outlined">
+                                    supervisor_account
+                                </span>
+                                <span class="ml-3">Professeurs</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'professeurs_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100">
+                                <span class="material-symbols-outlined">
+                                    supervisor_account
+                                </span>
+                                <span class="ml-3">Professeurs</span>
+                            </a>
+                            {% endif %}
+                            
+                        </li>
+
+                        <li>
+                            {% if request.resolver_match.url_name == 'formations_admin' %}
+                            <a href="{% url 'formations_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <span class="material-symbols-outlined">
+                                    book_2
+                                </span>
+                                <span class="ml-3">Formations</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'formations_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100">
+                                <span class="material-symbols-outlined">
+                                    book_2
+                                </span>
+                                <span class="ml-3">Formations</span>
+                            </a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if request.resolver_match.url_name == 'modules_admin' %}
+                            <a href="{% url 'modules_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <span class="material-symbols-outlined">
+                                    bookmark
+                                </span>
+                                <span class="ml-3">Modules</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'modules_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100 group">
+                                <span class="material-symbols-outlined">
+                                    bookmark
+                                </span>
+                                <span class="ml-3">Modules</span>
+                            </a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if request.resolver_match.url_name == 'evenements_admin' %}
+                            <a href="{% url 'evenements_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <span class="material-symbols-outlined">
+                                    calendar_month
+                                </span>
+                                <span class="ml-3">Évènements</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'evenements_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100 group">
+                                <span class="material-symbols-outlined">
+                                    calendar_month
+                                </span>
+                                <span class="ml-3">Évènements</span>
+                            </a>
+                            {% endif %}
+                        </li>
+                        {% endif %}
+                        <li class="pt-2 space-y-2 border-t border-gray-200"> 
+                            {% if request.resolver_match.url_name == 'profile' %}
+                            <a href="{% url 'profile' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <span class="material-symbols-outlined">
+                                    account_circle
+                                </span>
+                                <span class="ml-3">Mon Compte</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'profile' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100 group">
+                                <span class="material-symbols-outlined">
+                                    account_circle
+                                </span>
+                                <span class="ml-3">Mon Compte</span>
+                            </a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100 group">
+                                <span class="material-symbols-outlined">
+                                    logout
+                                </span>
+                                <span class="ml-3">Se Deconnecter</span>
+                            </a>
+                        </li>  
+                    </ul>
+                {% elif user.is_authenticated and user.role == "ETUDIANT" %}
+                    <ul class="space-y-2">
+                        <li>
+                            {% if request.resolver_match.url_name == 'dashboard' %}
+                            <a href="{% url 'dashboard' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <span class="material-symbols-outlined">
+                                    home
+                                </span>
+                                <span class="ml-3">Tableau de Bord</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'dashboard' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100 ">
+                                <span class="material-symbols-outlined">
+                                    home
+                                </span>
+                                <span class="ml-3">Tableau de Bord</span>
+                            </a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if request.resolver_match.url_name == 'view_notes' %}
+                            <a href="{% url 'view_notes' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <span class="material-symbols-outlined">
+                                    bookmark
+                                </span>
+                                <span class="ml-3">Mes Notes</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'view_notes' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100 group">
+                                <span class="material-symbols-outlined">
+                                    bookmark
+                                </span>
+                                <span class="ml-3">Mes Notes</span>
+                            </a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if request.resolver_match.url_name == 'evenements_admin' %}
+                            <a href="{% url 'evenements_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <span class="material-symbols-outlined">
+                                    calendar_month
+                                </span>
+                                <span class="ml-3">Évènements</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'evenements_admin' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100 group">
+                                <span class="material-symbols-outlined">
+                                    calendar_month
+                                </span>
+                                <span class="ml-3">Évènements</span>
+                            </a>
+                            {% endif %}
+                        </li>
+                        <li class="pt-2 space-y-2 border-t border-gray-200"> 
+                            {% if request.resolver_match.url_name == 'profile' %}
+                            <a href="{% url 'profile' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <span class="material-symbols-outlined">
+                                    account_circle
+                                </span>
+                                <span class="ml-3">Mon Compte</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'profile' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100 group">
+                                <span class="material-symbols-outlined">
+                                    account_circle
+                                </span>
+                                <span class="ml-3">Mon Compte</span>
+                            </a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}" class="flex items-center px-3 py-3 text-base font-bold text-gray-600 rounded-lg hover:bg-gray-100 group">
+                                <span class="material-symbols-outlined">
+                                    logout
+                                </span>
+                                <span class="ml-3">Se Deconnecter</span>
+                            </a>
+                        </li>  
+                    </ul>
+                {% else %}
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="{% url 'login' %}" class="flex items-center px-3 py-3 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 group">
+                                <span class="material-symbols-outlined">
+                                    logout
+                                </span>
+                                <span class="ml-3">Se Connecter</span>
+                            </a>
+                        </li>  
+                    </ul>
+                {% endif %}
+            </div>
+        </aside>
+
+        <div>
+            {% block body %}
+            {% endblock %}
+        </div>
+    
+    </body>
+</html>

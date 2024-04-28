@@ -1,0 +1,44 @@
+{% extends "fsr_licence/layout2.html" %}
+{% load static %}
+
+{% block body %}
+
+<section class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div class="max-w-xl mb-4">
+            <span class="bg-blue-100 text-blue-600 text-sm font-bold px-2.5 py-0.5 rounded-xl dark:bg-blue-900 dark:text-blue-300">MODULES</span>
+            <h2 class="text-3xl font-black sm:text-4xl mt-4">MODULES LICENCE</h2>
+        </div>
+
+        <div class="mx-auto mt-8">
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                {% for module in modules %}
+                <div class="max-w-xl p-6 bg-gray-50 rounded-lg border-2 border-gray-100 hover:bg-gray-100">
+                    <a href="#">
+                        <h5 class="text-xl font-bold text-gray-800 mb-2 mt-2">{{ module.nom }}</h5>
+                    </a>
+                    <span class="bg-green-100 text-green-600 text-sm font-bold px-2.5 py-0.5 rounded-xl">Professeur: {{ module.professeur.get_full_name }}</span>
+                    <br>
+                    <a href="{% url 'view_module' module.id %}" class="bg-green-600 inline-flex items-center py-2 text-md font-bold text-center text-white rounded-lg p-2 mt-4">
+                        <span class="material-symbols-outlined mr-2">
+                            arrow_forward
+                        </span>
+                        Détails
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if user.is_authenticated and user.role == "PROFESSEUR" %}
+            <a href="{% url 'add_module' %}" class="bg-green-600 inline-flex items-center py-2 px-3 text-md font-bold text-center text-white rounded-lg mt-8">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+                Ajouter Module
+            </a>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

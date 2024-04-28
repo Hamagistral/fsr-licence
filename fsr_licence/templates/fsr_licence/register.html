@@ -1,0 +1,106 @@
+{% extends "fsr_licence/layout1.html" %}
+{% load static %}
+{% block body %}
+
+    <div class="flex min-h-full flex-col justify-center px-6 py-24 lg:px-8 bg-white">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <img class="mx-auto h-24 w-auto" src="{% static 'fsr_licence/assets/logofsr.jpg' %}" alt="LOGO FSR">
+            <h2 class="mt-8 text-center text-3xl font-bold leading-9 tracking-tight text-gray-800">Inscription</h2>
+        </span>
+        </div>
+
+        {% if message %}
+            <div role="alert" class="sm:mx-auto sm:w-full sm:max-w-sm mt-4 rounded border-s-4 border-red-500 bg-red-50 p-4">
+                <div class="flex items-center gap-2 text-red-800">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                    <path
+                    fill-rule="evenodd"
+                    d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                    clip-rule="evenodd"
+                    />
+                </svg>
+            
+                <strong class="block font-medium">Erreur</strong>
+                </div>
+            
+                <p class="mt-2 text-sm text-red-700">
+                    {{ message }}
+                </p>
+            </div>
+        {% endif %}
+
+        <section class="bg-white">
+            <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+                <form action="{% url 'register' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                        <div class="sm:col-span-2">
+                            <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rôle</label>
+                            <select
+                            id="role" name="role"
+                            class="px-2 block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                            >
+                                <option value="ETUDIANT">Etudiant</option>
+                                <option value="PROFESSEUR">Professeur</option>
+                            </select>
+                        </div>
+                        <div class="w-full">
+                            <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Identifiant</label>
+                            <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ahmed_berrada" required="">
+                        </div>
+                        <div class="w-full">
+                            <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom</label>
+                            <input type="text" name="last_name" id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Berrada" required="">
+                        </div>
+                        <div class="w-full">
+                            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prénom</label>
+                            <input type="text" name="first_name" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ahmed" required="">
+                        </div>
+                        <div class="w-full">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ahmed.berrada@gmail.com" required="">
+                        </div>
+                        <div class="w-full">
+                            <label for="cin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CIN</label>
+                            <input type="text" name="cin" id="cin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Y565874" required="">
+                        </div>
+                        <div class="w-full">
+                            <label for="massar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Code Massar</label>
+                            <input type="text" name="massar" id="massar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="R1254874">
+                        </div>
+                        <div class="w-full">
+                            <label for="birthdate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date Naissance</label>
+                            <input type="date" name="birthdate" id="birthdate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Date Naissance" required="">
+                        </div>
+                        <div class="w-full">
+                            <label for="nationality" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nationalité</label>
+                            <input type="text" name="nationality" id="nationality" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Marocain(e)" required="">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Adresse</label>
+                            <input type="text" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Rés. Soleil, Rue Zerktouni, Casablanca 26414">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mot de passe</label>
+                            <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  required="">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmez votre mot de passe</label>
+                            <input id="password" name="confirmation" type="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                        </div>
+                    </div>
+                    
+                    
+                    <div>
+                        <button type="submit" value="Login" class="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 mt-6 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-700">S'INSCRIRE</button>
+                    </div>
+                </form>
+                <p class="mt-10 text-center text-sm text-gray-500">
+                    Vous avez déja un compte?
+                    <a href="{% url 'login' %}" class="font-semibold leading-6 text-blue-600 hover:text-blue-500">Se connectez</a>
+                </p>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

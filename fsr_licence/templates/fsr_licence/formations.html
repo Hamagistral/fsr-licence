@@ -1,0 +1,78 @@
+{% extends "fsr_licence/layout1.html" %}
+{% load static %}
+
+{% block body %}
+
+<section class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div class="max-w-xl">
+            <span class="bg-blue-100 text-blue-600 text-sm font-bold px-2.5 py-0.5 rounded-xl dark:bg-blue-900 dark:text-blue-300">FORMATIONS</span>
+            <h2 class="text-3xl font-black sm:text-4xl mt-4">CATALOGUE DES FORMATIONS</h2>
+    
+            <p class="mt-4 font-medium text-gray-600">
+                La Faculté des Sciences de Rabat propose un catalogue riche en formations aussi bien pour les 
+                licences fondamentales, professionnelles ou d'excellence que pour les masters recherche et 
+                spécialisés. 
+            </p>
+        </div>
+  
+        <div class="mx-auto mt-8">
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                <div class="max-w-xl p-6 bg-gray-50 rounded-lg shadow">
+                    <a href="#">
+                        <h5 class="mb-4 text-3xl font-bold text-gray-800">Licence</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-600 ">Licence Fondamentales, Professionnelles, 
+                        Education et Excellence</p>
+                    <a href="{% url 'formation_licence' %}" class="inline-flex items-center py-2 text-md font-bold text-center text-blue-600 ">
+                        Voir Plus
+                        <span class="material-symbols-outlined ml-2">
+                            arrow_forward
+                        </span>
+                    </a>
+                </div>
+                <div class="max-w-xl p-6 bg-gray-50 rounded-lg shadow">
+                    <a href="#">
+                        <h5 class="mb-4 text-3xl font-bold text-gray-800">Master</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-600 ">Masters Recherche et Masters Spécialisés
+                    </p>
+                    <a href="#" class="inline-flex items-center py-2 text-md font-bold text-center text-blue-600 ">
+                        Voir Plus
+                        <span class="material-symbols-outlined ml-2">
+                            arrow_forward
+                        </span>
+                    </a>
+                </div>
+                <div class="max-w-xl p-6 bg-gray-50 rounded-lg shadow">
+                    <a href="#">
+                        <h5 class="mb-4 text-3xl font-bold text-gray-800">Doctorat</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-600 ">Intègre des enseignements disciplinaires et 
+                        pluridisciplinaires, des enseignements d ouverture 
+                        et préparation du projet professionnel</p>
+                    <a href="#" class="inline-flex items-center py-2 text-md font-bold text-center text-blue-600 ">
+                        Voir Plus
+                        <span class="material-symbols-outlined ml-2">
+                            arrow_forward
+                        </span>
+                    </a>
+                </div>
+                <div class="max-w-xl p-6 bg-gray-50 rounded-lg shadow">
+                    <a href="#">
+                        <h5 class="mb-4 text-3xl font-bold text-gray-800">Continue</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-600 ">Certificat d Université et Diplôme d Université</p>
+                    <a href="#" class="inline-flex items-center py-2 text-md font-bold text-center text-blue-600 ">
+                        Voir Plus
+                        <span class="material-symbols-outlined ml-2">
+                            arrow_forward
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

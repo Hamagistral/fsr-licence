@@ -1,0 +1,59 @@
+{% extends "fsr_licence/layout2.html" %}
+{% load static %}
+
+{% block body %}
+
+<section class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div class="max-w-xl mb-4">
+            <span class="bg-blue-100 text-blue-600 text-sm font-bold px-2.5 py-0.5 rounded-xl dark:bg-blue-900 dark:text-blue-300">EVENEMENTS</span>
+            <h2 class="text-3xl font-black sm:text-4xl mt-4">EVENEMENTS LICENCE</h2>
+        </div>
+
+        <div class="mx-auto mt-8">
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                {% for evenement in evenements %}
+                    <a href="#" class="relative block overflow-hidden rounded-lg border border-gray-100 hover:bg-gray-50 p-4 sm:p-6 lg:p-8">
+                        <span
+                            class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
+                        ></span>
+
+                        <div class="sm:flex sm:justify-between sm:gap-4">
+                            <div>
+                                <span class="bg-blue-100 text-blue-600 text-xs px-2.5 py-0.5 rounded-xl dark:bg-blue-900 dark:text-blue-300">{{ evenement.formation_licence|safe|truncatechars:32 }}</span>
+                                <h3 class="text-lg font-bold text-gray-900 sm:text-xl mt-2">
+                                    {{ evenement.titre }}
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <p class="text-pretty text-sm text-gray-500">
+                                {{ evenement.description|safe|truncatechars:124 }}
+                            </p>
+                        </div>
+
+                        <dl class="mt-6 flex gap-4 sm:gap-6">
+                            <div class="flex flex-col-reverse">
+                                <dt class="text-sm font-medium text-gray-600">{{ evenement.date }} {{ evenement.heure }}</dt>
+                                <dd class="text-xs text-gray-500">{{ evenement.lieu }}</dd>
+                            </div>
+                        </dl>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if user.is_authenticated and user.role == "PROFESSEUR" %}
+        <a href="#" class="bg-green-600 inline-flex items-center py-2 px-3 text-md font-bold text-center text-white rounded-lg mt-8">
+            <span class="material-symbols-outlined">
+                add
+            </span>
+            Ajouter evenement
+        </a>
+        {% endif %}
+  
+    </div>
+</section>
+
+{% endblock %}

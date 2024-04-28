@@ -1,0 +1,278 @@
+{% extends "fsr_licence/layout1.html" %}
+{% load static %}
+
+{% block body %}
+
+    <!-- Hero Section -->
+    <section class="bg-white dark:bg-gray-900">
+        <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+            <div class="mr-auto place-self-center lg:col-span-7">
+                <span class="bg-blue-100 text-blue-600 text-sm font-bold px-2.5 py-0.5 rounded-xl dark:bg-blue-900 dark:text-blue-300">Université Mohammed V</span>
+                </span>
+                <h1 class="max-w-2xl mb-4 mt-4 text-4xl font-extrabold tracking-tight leading-none md:text-6xl xl:text-4xl text-gray-700s">Faculté des Sciences de Rabat
+                </h1>
+                <p class="max-w-2xl mb-6 text-gray-600 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">  Depuis sa création en 1959, la Faculté des Sciences de Rabat, premier
+                    établissement universitaire marocain, ne cesse de rayonner en cultivant l’excellence à tous les niveaux. </p>
+                <a href="{% url 'formations' %}" class="font-bold inline-flex items-center justify-center px-5 py-3 mr-3 text-base text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700">
+                    Voir Formations
+                    <span class="material-symbols-outlined ml-2">
+                        school
+                    </span>
+                </a>
+                <a href="{% url 'presentation' %}" class="font-bold inline-flex items-center justify-center px-5 py-3 text-base text-center text-blue-600 hover:text-blue-700">
+                    Présentation
+                    <span class="material-symbols-outlined ml-2">
+                        arrow_forward
+                    </span>
+                </a> 
+            </div>
+            <div class="hidden lg:mt-0 lg:col-span-5 lg:flex shadow-lg">
+                <iframe width="878" height="494" src="https://www.youtube.com/embed/37Z5nOzpLrc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" class="rounded-lg" allowfullscreen></iframe>
+            </div>                
+        </div>
+    </section>
+
+
+
+    <div class="bg-white">
+        <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-4 sm:px-6 lg:space-y-16 lg:px-8">
+            <h2 class="text-2xl font-bold">NOUVELLES INFORMATIONS</h2>
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                <article class="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm">
+                    <img
+                      alt=""
+                      src="http://www.fsr.ac.ma/sites/default/files/Premiere-place_1.jpg"
+                      class="h-56 w-full object-cover"
+                    />
+                  
+                    <div class="p-4 sm:p-6">
+                      <a href="#">
+                        <h3 class="text-lg font-medium text-gray-900">
+                            PrePLANCKS Morocco 2024
+                        </h3>
+                      </a>
+                  
+                      <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                        Résultats du concours « PrePLANCKS Morocco 2024 » : Trois équipes se sont qualifiées pour la finale de PLANCKS qui se tiendra à Dublin, en Irlande. Première place : L'équipe représentant la Faculté des Sciences de Rabat...
+                      </p>
+                  
+                      <a href="#" class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                        Lire plus.
+                  
+                        <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+                          &rarr;
+                        </span>
+                      </a>
+                    </div>
+                </article>
+
+                <article class="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm">
+                    <img
+                      alt=""
+                      src="http://www.fsr.ac.ma/sites/default/files/432099047_748382067416000_7480412198172635543_n%20%281%29.jpg"
+                      class="h-56 w-full object-cover"
+                    />
+                  
+                    <div class="p-4 sm:p-6">
+                      <a href="#">
+                        <h3 class="text-lg font-medium text-gray-900">
+                            Bourse Erasmus+KA107
+                        </h3>
+                      </a>
+                  
+                      <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                        Dans le cadre du Programme Erasmus+KA107, nous avons le plaisir de vous informer du lancement d’un appel à candidature pour l’octroi d’une bourse de mobilité par l’Université d’Évora.
+                      </p>
+                  
+                      <a href="#" class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                        Lire plus.
+                  
+                        <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+                          &rarr;
+                        </span>
+                      </a>
+                    </div>
+                </article>
+
+                <article class="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm">
+                    <img
+                      alt=""
+                      src="http://www.fsr.ac.ma/sites/default/files/ambs-alls_0.jpg"
+                      class="h-56 w-full object-cover"
+                    />
+                  
+                    <div class="p-4 sm:p-6">
+                      <a href="#">
+                        <h3 class="text-lg font-medium text-gray-900">
+                            JOURNÉE SCIENTIFIQUEUES
+                        </h3>
+                      </a>
+                  
+                      <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                        L'Association Marocaine de Biosécurité, Bio-sûreté et Sécurité Sanitaire (AMBS) a organisé le samedi 2 mars à la Faculté des Sciences de Rabat, une journée scientifique de conférences et de discussions...
+                      </p>
+                  
+                      <a href="#" class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                        Lire plus.
+                  
+                        <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+                          &rarr;
+                        </span>
+                      </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white">
+        <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-4 sm:px-6 lg:space-y-16 lg:px-8">
+            <h2 class="text-2xl font-bold">ACTIVITES PARA-UNIVERSITAIRE</h2>
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                <article class="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm">
+                    <img
+                      alt=""
+                      src="http://www.fsr.ac.ma/sites/default/files/art-fsr.jpg"
+                      class="h-56 w-full object-cover"
+                    />
+                  
+                    <div class="p-4 sm:p-6">
+                      <a href="#">
+                        <h3 class="text-lg font-medium text-gray-900">
+                            Exposition art et conférence
+                        </h3>
+                      </a>
+                  
+                      <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                        Découvrez la richesse de l’art et de la culture marocaine lors de notre exposition et conférence organisées à l’occasion de la Journée Mondiale de l’Art...
+                      </p>
+                  
+                      <a href="#" class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                        Lire plus.
+                  
+                        <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+                          &rarr;
+                        </span>
+                      </a>
+                    </div>
+                </article>
+
+                <article class="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm">
+                    <img
+                      alt=""
+                      src="http://www.fsr.ac.ma/sites/default/files/ALLS-web.jpg"
+                      class="h-56 w-full object-cover"
+                    />
+                  
+                    <div class="p-4 sm:p-6">
+                      <a href="#">
+                        <h3 class="text-lg font-medium text-gray-900">
+                            Tournoi de basketball
+                        </h3>
+                      </a>
+                  
+                      <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                        Des photos des équipes masculine et féminine de la Faculté des Sciences de Rabat qui participent au tournoi de basketball...
+                      </p>
+                  
+                      <a href="#" class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                        Lire plus.
+                  
+                        <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+                          &rarr;
+                        </span>
+                      </a>
+                    </div>
+                </article>
+
+                <article class="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm">
+                    <img
+                      alt=""
+                      src="http://www.fsr.ac.ma/sites/default/files/alls-1000.jpg"
+                      class="h-56 w-full object-cover"
+                    />
+                  
+                    <div class="p-4 sm:p-6">
+                      <a href="#">
+                        <h3 class="text-lg font-medium text-gray-900">
+                            Tournoi d'échecs
+                        </h3>
+                      </a>
+                  
+                      <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                        Le coup d'envoi du tournoi d'échecs tant attendu de la Faculté des Sciences de Rabat est donné ! Les échiquiers s'animent de mouvements stratégiques et de calculs savants alors que les esprits...
+                      </p>
+                  
+                      <a href="#" class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                        Lire plus.
+                  
+                        <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+                          &rarr;
+                        </span>
+                      </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    
+
+        <div class="bg-blue-600 mt-8">
+            <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-8 sm:px-6 lg:space-y-16 lg:px-8">
+                <div class="grid grid-cols-1 gap-8 lg:grid-cols-5">
+                    <a href="{% url 'view_formations_cat' 'Informatique' %}"  class="font-bold flex justify-between text-gray-700 bg-white border-2 border-blue-400 hover:bg-gray-50 rounded-lg text-sm px-5 py-3 text-center  items-center mr-4">
+                        <span class="material-symbols-rounded pr-2" style="font-size: 20px;">
+                            computer
+                        </span>
+                        Informatique
+                        <span class="material-symbols-outlined">
+                            chevron_right
+                        </span>
+                    </a>
+                    
+                    <a href="{% url 'view_formations_cat' 'Mathématiques' %}"  class="font-bold flex justify-between text-gray-700 bg-white border-2 border-blue-400 hover:bg-gray-50 rounded-lg text-sm px-5 py-3 text-center  items-center mr-4">
+                      <span class="material-symbols-rounded pr-2" style="font-size: 20px;">
+                          functions
+                      </span>
+                      Mathématiques
+                      <span class="material-symbols-outlined">
+                          chevron_right
+                      </span>
+                    </a>
+        
+                    <a href="{% url 'view_formations_cat' 'Géologie' %}"  class="font-bold flex justify-between text-gray-700 bg-white border-2 border-blue-400 hover:bg-gray-50 rounded-lg text-sm px-5 py-3 text-center  items-center mr-4">
+                        <span class="material-symbols-rounded pr-2" style="font-size: 20px;">
+                            public
+                        </span>
+                        Géologie
+                        <span class="material-symbols-outlined">
+                            chevron_right
+                        </span>
+                    </a>
+
+                    <a href="{% url 'view_formations_cat' 'Chimie' %}"  class="font-bold flex justify-between text-gray-800 bg-white border-2 border-blue-400 hover:bg-gray-50 rounded-lg text-sm px-5 py-3 text-center  items-center mr-4">
+                      <span class="material-symbols-rounded pr-2" style="font-size: 20px;">
+                          experiment
+                      </span>
+                      Chimie
+                      <span class="material-symbols-outlined">
+                          chevron_right
+                      </span>
+                    </a>
+
+                    <a href="{% url 'view_formations_cat' 'Physique' %}"  class="font-bold flex justify-between text-gray-700 bg-white border-2 border-blue-400 hover:bg-gray-50 rounded-lg text-sm px-5 py-3 text-center  items-center mr-4">
+                        <span class="material-symbols-rounded pr-2" style="font-size: 20px;">
+                            manufacturing
+                        </span>
+                        Physique
+                        <span class="material-symbols-outlined">
+                            chevron_right
+                        </span>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+{% endblock %}

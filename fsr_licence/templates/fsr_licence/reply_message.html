@@ -1,0 +1,60 @@
+{% extends "fsr_licence/layout2.html" %}
+{% load static %}
+
+{% block body %}
+
+<section class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div class="max-w-full mb-4">
+            <h2 class="text-3xl font-black sm:text-4xl mt-4 mb-4">MESSAGE</h2>
+            <div class="flex justify-between">
+                <span class="bg-blue-100 text-blue-600 text-sm font-bold px-3 py-1 rounded-xl dark:bg-blue-900 dark:text-blue-300">De: {{ message.sender.email }}</span>
+                <span class="bg-green-100 text-green-600 text-sm font-bold px-2.5 py-0.5 rounded-xl">{{ message.created_at }}</span>
+            </div>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+
+            <div class="sm:col-span-6">
+                <label class="block text-xl font-bold leading-6 text-blue-900">Sujet</label>
+                <div class="mt-4 bg-blue-100 rounded p-3">
+                    <span class="font-bold text-lg text-gray-700">{{ message.subject }}</span>
+                </div>
+            </div>
+            
+            <div class="sm:col-span-6">
+                <label class="block text-xl font-bold leading-6 text-blue-900">Message</label>
+                <div class="mt-4 bg-gray-50 rounded p-3">
+                    <p class="font-regular text-lg text-gray-600 indent-4 break-words">{{ message.message_text|linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+
+        <form action="{% url 'reply_message' message.id %}" method="POST" class="mt-8">
+            {% csrf_token %}
+            <div class="sm:col-span-6">
+                <label class="block text-xl font-bold leading-6 text-blue-900 mb-4">Destinataire</label>
+                <span class="font-bold text-lg text-gray-700">{{ form.receiver }}</span>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">   
+                <div class="sm:col-span-6">
+                    <label class="block text-xl font-bold leading-6 text-blue-900 mb-4">Répondre</label>
+                    <span class="font-regular text-lg text-gray-600">{{ form.message_text }}</span>
+                </div>
+            </div>
+
+            <input type="hidden" name="subject" value="{{ message.subject }}">
+
+
+            <button type="submit" class="bg-green-600 inline-flex items-center py-2 px-3 text-md font-bold text-center text-white rounded-lg mt-8">
+                <span class="material-symbols-outlined mr-2">
+                    send
+                </span>
+                Envoyer
+            </button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "fsr_licence/layout2.html" %}
+{% load static %}
+
+{% block body %}
+
+<section class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div class="max-w-full mb-4">
+            <h2 class="text-3xl font-black sm:text-4xl mt-4 mb-4">MODULE {{ module.nom|upper }}</h2>
+            {% for licence in module.formation_licence.all %}
+                <span class="bg-blue-100 text-blue-600 text-sm font-bold px-2.5 py-0.5 rounded-xl mr-1">
+                    {{ licence.nom }}
+                </span>
+            {% if not forloop.last %}<br> {% endif %}
+            {% endfor %}
+        </div>
+        
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+
+            <div class="sm:col-span-4">
+                <label for="email" class="block text-lg font-bold leading-6 text-blue-900">Description</label>
+                <div class="mt-2 bg-blue-100 rounded p-2">
+                    <span class="font-medium text-lg text-gray-700">{{ module.description|linebreaks }}</span>
+                </div>
+            </div>
+
+            <div class="sm:col-span-2">
+                <label for="last-name" class="block text-xl font-bold leading-6 text-blue-900">Professeur</label>
+                <div class="mt-2 bg-green-100 rounded p-2">
+                    <span class="font-bold text-lg text-gray-700">{{ module.professeur.first_name }} {{ module.professeur.last_name|upper }}</span>
+                </div>
+            </div>
+
+            <div class="sm:col-span-6">
+                <label for="last-name" class="block text-xl font-bold leading-6 text-blue-900 mb-4">Notes</label>
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                        <thead class="text-sm text-gray-700 uppercase bg-blue-100 font-bold">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Nom
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Note
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Status
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for note in notes %}
+                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ note.etudiant.first_name }} {{ note.etudiant.last_name }} 
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ note.valeur }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {% if note.valeur > 10 %}
+                                        <span class="bg-green-100 text-green-600 text-sm font-bold px-2.5 py-0.5 rounded-xl">Validé</span>
+                                    {% else %}
+                                        <span class="bg-red-100 text-red-600 text-sm font-bold px-2.5 py-0.5 rounded-xl">Rattrapage</span>
+                                    {% endif %}
+                                </td>
+                                <td class="px-6 py-4 inline-flex items-center text-blue-600 hover:text-blue-800">
+                                    <span class="material-symbols-rounded mr-2 ">
+                                        edit
+                                    </span>
+                                    <a href="#" class="font-bold">Modifier</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="sm:col-span-1">
+                <a href="{% url 'edit_module' module.id %}" class="bg-blue-600 inline-flex items-center px-4 py-3 hover:bg-blue-700 transition text-md font-bold text-center text-white rounded-lg mr-2 mt-4">
+                    Modifier
+                    <span class="material-symbols-outlined ml-2">
+                        bookmark_manager
+                    </span>
+                </a>
+            </div>
+        
+        </div> 
+    </div>
+</section>
+
+{% endblock %}

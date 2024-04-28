@@ -1,0 +1,102 @@
+{% extends "fsr_licence/layout2.html" %}
+{% load static %}
+
+{% block body %}
+
+<section class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div class="max-w-full mb-4">
+            <h2 class="text-3xl font-black sm:text-4xl mt-4 mb-4">FORMATION {{ formation.nom|upper }}</h2>
+            <span class="text-sm font-bold text-gray-500 mr-2">Type de Diplôme</span><span class="bg-blue-100 text-blue-600 text-sm font-bold px-2.5 py-0.5 rounded-xl dark:bg-blue-900 dark:text-blue-300">{{ formation.type }}</span>
+        </div>
+        
+        <div class="pt-4 pb-4 mb-4 text-gray-500 text-sm border-b-2 border-blue-600">
+            <p>Formation > <a href="{% url 'formations_admin' %}" class="hover:text-blue-800">Formation Licence</a> > <a href="{% url 'view_formation' formation.id %}" class="font-black text-blue-600 hover:text-blue-800">{{ formation.nom }}</a></p>
+        </div>
+  
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div class="sm:col-span-2">
+                <label for="last-name" class="block text-lg font-bold leading-6 text-blue-900">Responsable</label>
+                <div class="mt-2 rounded-lg bg-blue-100 p-2">
+                    <span class="font-medium text-lg text-gray-700">{{ formation.responsable.first_name|capfirst  }} {{ formation.responsable.last_name|upper  }}</span>
+                </div>
+            </div>
+
+            <div class="sm:col-span-2">
+                <label for="last-name" class="block text-lg font-bold leading-6 text-blue-900">Type</label>
+                <div class="mt-2 rounded-lg bg-indigo-100 p-2">
+                    <span class="font-medium text-lg text-gray-700">{{ formation.type }}</span>
+                </div>
+            </div>
+
+            <div class="sm:col-span-2">
+                <label for="last-name" class="block text-lg font-bold leading-6 text-blue-900">Mode</label>
+                <div class="mt-2 rounded-lg bg-blue-100 p-2">
+                    <span class="font-medium text-lg text-gray-700">{{ formation.mode }}</span>
+                </div>
+            </div>
+
+            <div class="sm:col-span-6">
+                <label for="email" class="block text-lg font-bold leading-6 text-blue-900">Présentation</label>
+                <div class="mt-2">
+                    <p class="font-medium text-lg text-gray-700 text-justify">{{ formation.presentation|safe|linebreaks }}</p>
+                </div>
+            </div>
+
+            {% if formation.cursus != "" %}
+            <div class="sm:col-span-6">
+                <label for="email" class="block text-lg font-bold leading-6 text-blue-900">Cursus</label>
+                <div class="mt-2">
+                    <span class="font-medium text-lg text-gray-800"> {{ formation.cursus|linebreaks }}</span>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="bg-blue-600 p-4 rounded-lg text-white sm:col-span-6">
+                <label for="email" class="block text-lg font-bold leading-6 ">Capacité d'accueil:</label>
+                <div class="mt-4 flex items-center text-base font-bold group">
+                    <span class="material-symbols-outlined mr-2">
+                        school
+                    </span>
+                    <span class="font-medium text-lg">{{ formation.capacity }} Etudiants</span>
+                </div>
+            </div>
+
+            {% if formation.prerequis != "" %}
+            <div class="sm:col-span-6">
+                <label for="email" class="block text-lg font-bold leading-6 text-blue-900">Prérequis</label>
+                <div class="mt-2">
+                    <span class="font-medium text-lg text-gray-800">{{ formation.prerequis|linebreaks }}</span>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="sm:col-span-6">
+                <label for="email" class="block text-lg font-bold leading-6 text-blue-900">Débouchés</label>
+                <div class="mt-2">
+                    <span class="font-medium text-lg text-gray-800">{{ formation.debouches|linebreaks }}</span>
+                </div>
+            </div>
+
+            <div class="sm:col-span-6">
+                <label for="email" class="block text-lg font-bold leading-6 text-blue-900">Fiche de la Formation</label>
+                <div class="mt-2">
+                    <img class="h-auto max-w-3xl" src="{{ formation.lien_fiche_pdf }}" alt="fiche">
+                </div>
+            </div>
+            
+            {% if user.is_authenticated and user.role == "PROFESSEUR" %}
+            <div class="sm:col-span-1">
+                <a href="{% url 'edit_formation' formation.id %}" class="bg-blue-600 inline-flex items-center px-4 py-3 hover:bg-blue-700 transition text-md font-bold text-center text-white rounded-lg mr-2 mt-4">
+                    Modifier
+                    <span class="material-symbols-outlined ml-2">
+                        bookmark_manager
+                    </span>
+                </a>
+            </div>
+            {% endif %}
+        </div> 
+    </div>
+</section>
+
+{% endblock %}

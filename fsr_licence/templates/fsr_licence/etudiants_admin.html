@@ -1,0 +1,64 @@
+{% extends "fsr_licence/layout2.html" %}
+{% load static %}
+
+{% block body %}
+
+<section class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div class="max-w-xl mb-4">
+            <span class="bg-blue-100 text-blue-600 text-sm font-bold px-2.5 py-0.5 rounded-xl">LICENCE</span>
+            <h2 class="text-3xl font-black sm:text-4xl mt-4">ETUDIANTS</h2>
+        </div>
+
+        <div class="mx-auto mt-8">
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                <div class="sm:col-span-6">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                            <thead class="text-xs text-gray-700 uppercase bg-blue-100 ">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-sm font-bold text-blue-800">
+                                        Nom
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-sm font-bold text-blue-800">
+                                        Massar
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-sm font-bold text-blue-800">
+                                        Formation
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-sm font-bold text-blue-800">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for etudiant in etudiants %}
+                                <tr class="odd:bg-white even:bg-gray-50">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-800 whitespace-nowrap dark:text-white">
+                                        {{ etudiant.first_name }} {{ etudiant.last_name|upper }} 
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{ etudiant.massar }}
+                                    </td>
+                                    <td class="text-blue-600 text-sm font-bold px-6 py-4">
+                                        <span class="bg-blue-100 text-blue-600 text-sm font-bold px-3 py-1 rounded-full">{{ etudiant.formation }}</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="#" class="bg-green-600 hover:bg-green-700 inline-flex items-center text-md font-bold text-center text-white rounded-lg p-2">
+                                            <span class="material-symbols-outlined mr-2">
+                                                bookmark_manager
+                                            </span>
+                                            Modifier
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

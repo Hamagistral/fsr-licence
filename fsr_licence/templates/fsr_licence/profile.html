@@ -1,0 +1,61 @@
+{% extends "fsr_licence/layout2.html" %}
+{% load static %}
+
+{% block body %}
+
+<body class="bg-gray-50">
+    <div class="max-w-2xl mx-auto my-16 py-8 px-6 bg-white rounded-lg shadow-md ">
+
+        {% if user.role == "PROFESSEUR" %}
+        <img class="w-36 h-36 rounded-full mx-auto border-4 border-indigo-200 shadow" src="https://img.freepik.com/free-photo/3d-illustration-cartoon-character-with-glasses-white-coat_1142-55935.jpg?t=st=1713717445~exp=1713721045~hmac=17e1ded726762b770ff39ea974defa164bcdb343054298e68720874e0f9510ac&w=740" alt="Professeur">
+        {% else %}    
+        <img class="w-36 h-36 rounded-full mx-auto border-4 border-blue-200 shadow" src="https://img.freepik.com/free-photo/3d-illustration-cute-cartoon-boy-with-backpack-his-back_1142-40542.jpg?t=st=1713720468~exp=1713724068~hmac=d9ec21ace59ba5d2bef6c2d8bb2df0c874ce591d3c54f535e8b454663760b070&w=740" alt="Student">
+        {% endif %}
+
+        {% if user.role == "PROFESSEUR" %}
+        <p class="bg-indigo-100 text-indigo-700 text-sm text-center font-bold px-2.5 py-0.5 rounded-xl mt-4 justify-center w-48 mx-auto">{{ user.role|upper }}</p>
+        {% else %}    
+        <p class="bg-blue-100 text-blue-700 text-sm text-center font-bold px-2.5 py-0.5 rounded-xl mt-4 justify-center w-48 mx-auto">{{ user.role|upper }}</p>
+        {% endif %}
+
+        <h2 class="text-center text-2xl font-bold mt-4 mb-8">{{ user.first_name }} {{ user.last_name|upper }}</h2>
+        
+        <div class="mt-5">
+            <h3 class="text-lg font-bold">Email</h3>
+            <p class="bg-gray-100 rounded-lg p-4 text-gray-600 mt-2">{{ user.email}}</p>
+        </div>
+
+        {% if user.role == "ETUDIANT" %}
+        <div class="mt-5">
+            <h3 class="text-lg font-bold">Code Massar</h3>
+            <p class="bg-gray-100 rounded-lg p-4 text-gray-600 mt-2">{{ user.massar|upper }}</p>
+        </div>
+        <div class="mt-5">
+            <h3 class="text-lg font-bold">Formation</h3>
+            <p class="bg-gray-100 rounded-lg p-4 text-gray-600 mt-2">{{ user.formation|upper }}</p>
+        </div>
+        {% endif %}
+
+        <div class="mt-5">
+            <h3 class="text-lg font-bold">CIN</h3>
+            <p class="bg-gray-100 rounded-lg p-4 text-gray-600 mt-2">{{ user.cin|upper }}</p>
+        </div>
+        
+        <div class="mt-5">
+            <h3 class="text-lg font-bold">Date de naissance</h3>
+            <p class="bg-gray-100 rounded-lg p-4 text-gray-600 mt-2">{{ user.birthdate|upper }}</p>
+        </div>
+        <div class="mt-5">
+            <h3 class="text-lg font-bold">Nationalité</h3>
+            <p class="bg-gray-100 rounded-lg p-4 text-gray-600 mt-2">{{ user.nationality|upper }}</p>
+        </div>
+        {% if user.address != "" %}
+        <div class="mt-5">
+            <h3 class="text-lg font-bold">Adresse</h3>
+            <p class="bg-gray-100 rounded-lg p-4 text-gray-600 mt-2">{{ user.address|upper }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+{% endblock %}

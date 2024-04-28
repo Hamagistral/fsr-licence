@@ -1,0 +1,130 @@
+{% extends "fsr_licence/layout2.html" %}
+{% load static %}
+
+{% block body %}
+
+<section class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 border-gray-100  border-b-2">
+        {% if user.is_authenticated and user.role == "PROFESSEUR" %}
+            <div class="max-w-xl">
+                <h2 class="text-3xl font-black text-gray-700 sm:text-4xl mt-4">Tableau de Bord</h2>
+            </div>
+    
+            <div class="mx-auto mt-8">
+                <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">
+                    <article class="flex items-end justify-between rounded-lg border border-gray-100 bg-green-200 p-6">
+                        <div>
+                            <div class="text-xl font-bold flex items-center text-gray-600 rounded-lg">
+                                <span class="material-symbols-outlined text-green-700 mr-2">
+                                    groups
+                                </span>
+                                <p class="text-green-700">Etudiants</p>
+                            </div>
+                            
+                            <p class="text-2xl font-medium text-gray-900 mt-2">{{ etudiants_count }}</p>
+                        </div>
+                    </article>
+                    <article class="flex items-end justify-between rounded-lg border border-gray-100 bg-purple-200 p-6">
+                        <div>
+                            <div class="text-xl font-bold flex items-center text-gray-600 rounded-lg">
+                                <span class="material-symbols-outlined text-purple-700 mr-2">
+                                supervisor_account
+                                </span>
+                                <p class="text-purple-700">Professeurs</p>
+                            </div>
+                            
+                            <p class="text-2xl font-medium text-gray-900 mt-2">{{ professeurs_count }}</p>
+                        </div>
+                    </article>
+                    <article class="flex items-end justify-between rounded-lg border border-gray-100 bg-blue-200 p-6">
+                        <div>
+                            <div class="text-xl font-bold flex items-center text-gray-600 rounded-lg">
+                                <span class="material-symbols-outlined text-blue-700 mr-2">
+                                book_2
+                                </span>
+                                <p class="text-blue-700">Formations</p>
+                            </div>
+                            
+                            <p class="text-2xl font-medium text-gray-900 mt-2">{{ formations_count }}</p>
+                        </div>
+                    </article>
+                    <article class="flex items-end justify-between rounded-lg border border-gray-100 bg-yellow-200 p-6">
+                        <div>
+                            <div class="text-xl font-bold flex items-center text-gray-600 rounded-lg">
+                                <span class="material-symbols-outlined text-yellow-700 mr-2">
+                                bookmark
+                                </span>
+                                <p class="text-yellow-700">Modules</p>
+                            </div>
+                            
+                            <p class="text-2xl font-medium text-gray-900 mt-2">{{ modules_count }}</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="max-w-full pt-8 mb-4 mt-8">
+            <span class="bg-blue-100 text-blue-600 text-sm font-bold px-2.5 py-0.5 rounded-xl">Messages</span>
+            <h2 class="text-3xl font-black sm:text-4xl mt-4 text-gray-700">Boîte de réception</h2>
+        </div>
+
+        <div class="mx-auto mt-8">
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                <div class="sm:col-span-6">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                            <thead class="text-xs text-gray-700 uppercase bg-blue-100 ">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-sm font-bold text-blue-800">
+                                        Expéditeur
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-sm font-bold text-blue-800">
+                                        Sujet
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-sm font-bold text-blue-800">
+                                        Reçu le
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-sm font-bold text-blue-800">
+                                        
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for message in messages %}
+                                <tr class="odd:bg-white even:bg-gray-50">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-800 whitespace-nowrap dark:text-white">
+                                        {{ message.sender.first_name }} {{ message.sender.last_name|upper }} 
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{ message.subject|safe|truncatechars:56 }}
+                                    </td>
+                                    <td class="text-blue-600 text-sm font-bold px-6 py-4">
+                                        <span class="bg-blue-100 text-blue-600 text-sm font-bold px-3 py-1 rounded-full">{{ message.created_at }}</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="{% url 'message_view' message.id %}" class="bg-green-600 hover:bg-green-700 inline-flex items-center text-md font-bold text-center text-white rounded-lg p-2">
+                                            <span class="material-symbols-outlined mr-2">
+                                                mail
+                                            </span>
+                                            Ouvrir
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="{% url 'new_message' %}" class="bg-green-600 inline-flex items-center py-2 px-3 text-md font-bold text-center text-white rounded-lg mt-8">
+                        <span class="material-symbols-outlined mr-2">
+                            edit
+                        </span>
+                        Nouveau message
+                    </a>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+{% endblock %}
